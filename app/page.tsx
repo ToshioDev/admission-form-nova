@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation"; // Importamos el componente
 import { RegistrationForm } from "@/components/registration-form";
 import Image from 'next/image';
-import Head from 'next/head';
 
 const phrases = [
   "La programación es como el arte, ¡crea lo que imaginas!",
