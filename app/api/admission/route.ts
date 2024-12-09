@@ -115,16 +115,3 @@ export async function POST(request: Request) {
         }, { status: 500 });
     }
 }
-
-export async function GET(request: Request) {
-    try {
-        const admissions = await prisma.admission.findMany();
-        return NextResponse.json(admissions);
-    } catch (error) {
-        console.error('Error fetching admissions:', error);
-        return NextResponse.json({ 
-            message: 'Error fetching admissions', 
-            error: error instanceof Error ? error.message : String(error) 
-        }, { status: 500 });
-    }
-}

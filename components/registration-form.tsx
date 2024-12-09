@@ -27,7 +27,7 @@ type FormData = {
 export const RegistrationForm = () => {
   const { toast, showToast, clearToast } = useToast();
   const [selectedDialCode, setSelectedDialCode] = useState<string>('+52'); // Default to Mexico
-  const [defaultCountry, setDefaultCountry] = useState<string>('MX');
+  const [defaultCountry] = useState<string>('MX');
   const [formError, setFormError] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [formValues, setFormValues] = useState<FormData>({
@@ -52,7 +52,7 @@ export const RegistrationForm = () => {
 
     try {
       // Destructure to remove prefijoPais
-      const { prefijoPais, ...submissionData } = formValues;
+      const { ...submissionData } = formValues;
       
       // Prepare the data for submission
       const finalSubmissionData = {
@@ -114,21 +114,15 @@ export const RegistrationForm = () => {
         setSelectedDate(undefined);
         setFormError(null);
       }
-    } catch (error: any) {
-      showToast({
-        title: "Error al Registrar",
-        description: error.message || "Hubo un problema al registrar tu admisión.",
-        variant: "destructive"
-      });
-      console.error("Error registering admission:", error);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        showToast({
+          title: "Error al Registrar",
+          description: error.message || "Hubo un problema al registrar tu admisión.",
+          variant: "destructive"
+        });
+      }
     }
-  };
-
-  const calculateAge = (birthDate: Date): number => {
-    const today = new Date();
-    const age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    return monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate()) ? age - 1 : age;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {

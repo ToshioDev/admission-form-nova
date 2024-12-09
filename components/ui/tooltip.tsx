@@ -38,7 +38,7 @@ export const Tooltip: React.FC<TooltipProps> = ({ children, content, open }) => 
   );
 };
 
-export const TooltipTrigger: React.FC<{ children: React.ReactNode, asChild?: boolean }> = ({ children, asChild }) => (
+export const TooltipTrigger: React.FC<{ children: React.ReactNode, asChild?: boolean }> = ({ children }) => (
   <>{children}</>
 );
 

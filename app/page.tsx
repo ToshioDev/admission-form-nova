@@ -51,20 +51,17 @@ const RandomPhrase = () => {
 export default function Page() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-black p-4">
-      <Head>
-        <title>Admisiones | Academia Nova</title>
-      </Head>
-      <div className="flex w-full max-w-screen-xl relative">
+      <div className="flex flex-col md:flex-row w-full max-w-screen-xl relative">
         {/* Fondo con el efecto de mosaico y bordes iluminados */}
         <div className="absolute inset-0 bg-mosaic-pattern animate-lighting" />
 
         {/* Columna izquierda: Mantiene el tamaño fijo */}
-        <div className="flex flex-col items-center justify-center w-1/2 space-y-4">
+        <div className="flex flex-col items-center justify-center w-full md:w-1/2 space-y-4 pt-1.5 md:pt-0 mt-8 md:mt-0">
           <RandomPhrase />
         </div>
 
-        {/* Columna derecha con el formulario: Ocupa el 50% */}
-        <div className="w-1/2">
+        {/* Columna derecha: Formulario de registro */}
+        <div className="flex flex-col items-center justify-center w-full md:w-1/2 space-y-4">
           <RegistrationForm />
         </div>
       </div>

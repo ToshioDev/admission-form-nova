@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { ToastOptions } from '@/hooks/use-toast';
 import { Copy } from 'lucide-react';
 import { Button } from './button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './tooltip';
+import { Tooltip, TooltipProvider, TooltipTrigger } from './tooltip';
 
 const variantStyles = {
   default: 'bg-white text-black border border-gray-200 shadow-lg',
@@ -34,9 +34,9 @@ interface ToastProps {
 }
 
 export const Toast: React.FC<ToastProps> = ({ toast, onClose }) => {
+  const [copied, setCopied] = useState(false);
   if (!toast) return null;
 
-  const [copied, setCopied] = useState(false);
   const variant = toast.variant || 'default';
 
   const handleCopyCode = () => {
