@@ -13,7 +13,6 @@ model Admission {
   apellidos       String
   fechaNacimiento DateTime?
   nacionalidad    String
-  prefijoPais   String  // Agregamos el campo prefijoPais
   correo          String
   celular         String?
 }

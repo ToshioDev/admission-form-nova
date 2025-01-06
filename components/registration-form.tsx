@@ -21,7 +21,6 @@ type FormData = {
   nacionalidad: string;
   correo: string;
   celular: string;
-  prefijoPais: string; // Agregamos el campo para el prefijo de país
 };
 
 export const RegistrationForm = () => {
@@ -37,7 +36,6 @@ export const RegistrationForm = () => {
     nacionalidad: "",
     correo: "",
     celular: "",
-    prefijoPais: "", // Inicializamos el prefijo de país
   });
   const handleCountrySelect = (dialCode: string) => {
     setSelectedDialCode(dialCode);
@@ -109,7 +107,7 @@ export const RegistrationForm = () => {
           nacionalidad: "",
           correo: "",
           celular: "",
-          prefijoPais: "",
+
         });
         setSelectedDate(undefined);
         setFormError(null);
