@@ -11,7 +11,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
-    command: mongod --replSet rs0 --keyFile /data/key.txt
+    command: sh -c 'chmod 400 /data/key.txt && mongod --replSet rs0 --keyFile /data/key.txt'
     networks:
       - mongo-net
   mongo2:
@@ -22,7 +22,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
-    command: mongod --replSet rs0 --keyFile /data/key.txt
+    command: sh -c 'chmod 400 /data/key.txt && mongod --replSet rs0 --keyFile /data/key.txt'
     networks:
       - mongo-net
   mongo3:
@@ -33,7 +33,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
-    command: mongod --replSet rs0 --keyFile /data/key.txt
+    command: sh -c 'chmod 400 /data/key.txt && mongod --replSet rs0 --keyFile /data/key.txt'
     networks:
       - mongo-net
 networks:
