@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   mongo1:
-    image: mongo
+    image: mongo:7.0
     ports:
       - "27017:27017"
     volumes:
@@ -11,29 +11,29 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
-    command: mongod --replSet rs0 --security.keyFile /data/key.txt
+    command: mongod --replSet rs0 --keyFile /data/key.txt
     networks:
       - mongo-net
   mongo2:
-    image: mongo
+    image: mongo:7.0
     volumes:
       - mongo2-data:/data/db
       - ../key.txt:/data/key.txt:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
-    command: mongod --replSet rs0 --security.keyFile /data/key.txt
+    command: mongod --replSet rs0 --keyFile /data/key.txt
     networks:
       - mongo-net
   mongo3:
-    image: mongo
+    image: mongo:7.0
     volumes:
       - mongo3-data:/data/db
       - ../key.txt:/data/key.txt:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
-    command: mongod --replSet rs0 --security.keyFile /data/key.txt
+    command: mongod --replSet rs0 --keyFile /data/key.txt
     networks:
       - mongo-net
 networks:
