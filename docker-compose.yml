@@ -7,30 +7,33 @@ services:
     volumes:
       - mongo1-data:/data/db
       - ./init-rs.js:/docker-entrypoint-initdb.d/init-rs.js:ro
+      - ../key.txt:/data/key.txt:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
-    command: mongod --replSet rs0
+    command: mongod --replSet rs0 --security.keyFile /data/key.txt
     networks:
       - mongo-net
   mongo2:
     image: mongo
     volumes:
       - mongo2-data:/data/db
+      - ../key.txt:/data/key.txt:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
-    command: mongod --replSet rs0
+    command: mongod --replSet rs0 --security.keyFile /data/key.txt
     networks:
       - mongo-net
   mongo3:
     image: mongo
     volumes:
       - mongo3-data:/data/db
+      - ../key.txt:/data/key.txt:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
-    command: mongod --replSet rs0
+    command: mongod --replSet rs0 --security.keyFile /data/key.txt
     networks:
       - mongo-net
 networks:
