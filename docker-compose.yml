@@ -1,13 +1,13 @@
 version: "3.9"
 services:
   mongo1:
-    image: mongo:7.0
+    image: mongo:latest
     ports:
       - "27017:27017"
     volumes:
       - mongo1-data:/data/db
       - ./init-rs.js:/docker-entrypoint-initdb.d/init-rs.js:ro
-      - ../key.txt:/data/key.txt # Mapeo ajustado, hemos quitado el :ro
+      - ../key.txt:/data/key.txt
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
@@ -15,10 +15,10 @@ services:
     networks:
       - mongo-net
   mongo2:
-    image: mongo:7.0
+    image: mongo:latest
     volumes:
       - mongo2-data:/data/db
-      - ../key.txt:/data/key.txt # Mapeo ajustado, hemos quitado el :ro
+      - ../key.txt:/data/key.txt
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
@@ -26,10 +26,10 @@ services:
     networks:
       - mongo-net
   mongo3:
-    image: mongo:7.0
+    image: mongo:latest
     volumes:
       - mongo3-data:/data/db
-      - ../key.txt:/data/key.txt # Mapeo ajustado, hemos quitado el :ro
+      - ../key.txt:/data/key.txt
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
