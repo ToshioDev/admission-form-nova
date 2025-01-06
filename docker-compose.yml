@@ -7,7 +7,7 @@ services:
     volumes:
       - mongo1-data:/data/db
       - ./init-rs.js:/docker-entrypoint-initdb.d/init-rs.js:ro
-      - ../key.txt:/data/key.txt:ro
+      - ../key.txt:/data/key.txt # Mapeo ajustado, hemos quitado el :ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
@@ -18,7 +18,7 @@ services:
     image: mongo:7.0
     volumes:
       - mongo2-data:/data/db
-      - ../key.txt:/data/key.txt:ro
+      - ../key.txt:/data/key.txt # Mapeo ajustado, hemos quitado el :ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
@@ -29,7 +29,7 @@ services:
     image: mongo:7.0
     volumes:
       - mongo3-data:/data/db
-      - ../key.txt:/data/key.txt:ro
+      - ../key.txt:/data/key.txt # Mapeo ajustado, hemos quitado el :ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Hola2021
