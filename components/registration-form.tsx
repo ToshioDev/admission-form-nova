@@ -49,6 +49,24 @@ export const RegistrationForm = () => {
     }
 
     try {
+      // Check if the person is at least 8 years old
+      if (selectedDate) {
+        const today = new Date();
+        let age = today.getFullYear() - selectedDate.getFullYear();
+        const monthDifference = today.getMonth() - selectedDate.getMonth();
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < selectedDate.getDate())) {
+          age--;
+        }
+        if (age < 8) {
+          showToast({
+            title: 'Edad insuficiente',
+            description: 'Debes tener al menos 8 años para registrarte.',
+            variant: 'destructive'
+          });
+          return;
+        }
+      }
+
       // Destructure to remove prefijoPais
       const { ...submissionData } = formValues;
       
